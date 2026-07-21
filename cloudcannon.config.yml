@@ -1,0 +1,21 @@
+paths:
+  static: public
+  uploads: public/uploads
+timezone: Asia/Saigon
+markdown:
+  engine: commonmark
+  options:
+    gfm: true
+collections_config:
+  content_pages:
+    path: src/content/pages
+    icon: contact_page
+  posts:
+    path: src/content/posts
+    icon: event_available
+  posts_examples:
+    path: src/content/posts/examples
+    icon: sound_sampler
+  posts_releases:
+    path: src/content/posts/_releases
+    icon: auto_delete
