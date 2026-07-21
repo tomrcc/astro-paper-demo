@@ -1,0 +1,45 @@
+name: Site health
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    # Daily at 06:00 UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  health:
+    name: CloudCannon site health check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      # Optional: comma-separated org names/UUIDs. Overrides the ORGS array in
+      # scripts/site-health.mjs. Set as a repo variable to avoid hardcoding.
+      CLOUDCANNON_ORGS: ${{ vars.CLOUDCANNON_ORGS }}
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "⚙️ Use Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: "☁️ Install CloudCannon CLI"
+        run: npm install -g @cloudcannon/cli
+
+      - name: "🔑 Log in to CloudCannon"
+        env:
+          CLOUDCANNON_ACCESS_KEY_ID: ${{ secrets.CLOUDCANNON_ACCESS_KEY_ID }}
+          CLOUDCANNON_ACCESS_KEY_SECRET: ${{ secrets.CLOUDCANNON_ACCESS_KEY_SECRET }}
+        run: |
+          cloudcannon login \
+            --access-key-id "$CLOUDCANNON_ACCESS_KEY_ID" \
+            --access-key-secret "$CLOUDCANNON_ACCESS_KEY_SECRET"
+
+      - name: "🩺 Check site health"
+        run: node scripts/site-health.mjs
