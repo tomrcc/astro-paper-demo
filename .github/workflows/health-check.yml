@@ -6,7 +6,7 @@ permissions:
 on:
   schedule:
     # Daily at 06:00 UTC
-    - cron: "0 6 * * *"
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 jobs:
@@ -42,4 +42,4 @@ jobs:
             --access-key-secret "$CLOUDCANNON_ACCESS_KEY_SECRET"
 
       - name: "🩺 Check site health"
-        run: node scripts/site-health.mjs
+        run: node ./site-health.mjs
