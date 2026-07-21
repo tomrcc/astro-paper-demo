@@ -3,7 +3,7 @@ author: Simon Smale
 pubDatetime: 2024-01-03T20:40:08Z
 modDatetime: 2024-01-08T18:59:05Z
 title: How to use Git Hooks to set Created and Modified Dates
-featured: false
+featured: true
 draft: false
 tags:
   - docs
@@ -11,8 +11,13 @@ tags:
 canonicalURL: https://smale.codes/posts/setting-dates-via-git-hooks/
 description: How to use Git Hooks to set your Created and Modified Dates on AstroPaper
 ---
+In this post I will <sup>explain</sup> how to ~use~ the pre-commit Git hook to automate the input of the created (`pubDatetime`) and modified (`modDatetime`) in the AstroPaper blog theme frontmatter
 
-In this post I will explain how to use the pre-commit Git hook to automate the input of the created (`pubDatetime`) and modified (`modDatetime`) in the AstroPaper blog theme frontmatter
+| Col 1 | Col 2 |
+| --- | --- |
+| True | False |
+| Pikachu | Bulbasaur |
+| Banana | Apple |
 
 ## Table of contents
 
@@ -132,7 +137,7 @@ We could use the `a` variable to switch inside the loop and either update the `m
 
 If your IDE supports snippets then there is the option to create a custom snippet to populate the frontmatter.[In AstroPaper v4 will come with one for VSCode by default.](https://github.com/satnaing/astro-paper/pull/206)
 
-<video autoplay muted="muted" controls plays-inline="true" class="border border-skin-line">
+<video autoplay="" muted="muted" controls="" plays-inline="true" class="border border-skin-line">
   <source src="https://github.com/satnaing/astro-paper/assets/17761689/e13babbc-2d78-405d-8758-ca31915e41b0" type="video/mp4">
 </video>
 
@@ -178,7 +183,6 @@ To stop the IDE complaining in the blog engine files I have also done the follow
      modDatetime?: Date | null;
    }
    ```
-
 2. added `| null` to line 5 in `src/components/Datetime.tsx` so that it looks like
 
    ```typescript
