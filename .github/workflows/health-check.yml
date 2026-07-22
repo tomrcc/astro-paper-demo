@@ -6,7 +6,7 @@ permissions:
 on:
   schedule:
     # Daily at 06:00 UTC
-    - cron: "0 3 * * *"
+    - cron: "8 7 * * *"
   workflow_dispatch:
 
 jobs:
@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: "☁️ Checkout repository"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "⚙️ Use Node.js"
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "24"
 

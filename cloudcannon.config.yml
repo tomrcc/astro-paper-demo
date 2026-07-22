@@ -56,7 +56,7 @@ markdown:
     treat_indentation_as_code: false
     table: true
     strikethrough: false
-    subscript: true
+    subscript: false
     superscript: false
     heading_ids: false
     attributes: false
